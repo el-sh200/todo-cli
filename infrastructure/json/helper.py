@@ -21,11 +21,13 @@ def append_to_file(new_objects, filename):
 def delete_from_file(key, value, filename):
     objects, is_valid = load_file(filename)
     deleted = False
-    for i in range(len(objects)):
-        if objects[i][key] == value:
-            objects.pop(i)
+    new_list = []
+    for obj in objects:
+        if obj[key] != value:
+            new_list.append(obj)
+        else:
             deleted = True
-    save_to_file(objects, filename)
+    save_to_file(new_list, filename)
     return deleted
 
 
