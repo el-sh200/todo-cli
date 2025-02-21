@@ -1,10 +1,10 @@
 import re
 
-from application.assignee.assignee_interface import AssigneeCrud
+from application.assignee.assignee_interface import AssigneeInterface
 from domain.assignee import Assignee
 
 
-class AssigneeService(AssigneeCrud):
+class AssigneeService(AssigneeInterface):
     def add_assignee(self, name, email):
         error = self.validate_assignee(name, email)
         if not error:

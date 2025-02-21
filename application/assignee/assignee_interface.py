@@ -1,32 +1,10 @@
-from abc import ABC, abstractmethod
+from abc import ABC
 
 from infrastructure.json.assignee_storage import save_assignee, load_assignee, append_assignee, delete_assignee, \
     update_assignee
 
 
 class AssigneeInterface(ABC):
-    @abstractmethod
-    def save(self, objects):
-        raise NotImplemented
-
-    @abstractmethod
-    def load(self):
-        raise NotImplemented
-
-    @abstractmethod
-    def append(self, objects):
-        raise NotImplemented
-
-    @abstractmethod
-    def delete(self, key, value):
-        raise NotImplemented
-
-    @abstractmethod
-    def get(self, data, key, value):
-        raise NotImplemented
-
-
-class AssigneeCrud(AssigneeInterface):
     def save(self, objects):
         save_assignee(objects)
 

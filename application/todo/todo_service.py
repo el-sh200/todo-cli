@@ -1,9 +1,9 @@
-from application.assignee.assignee_interface import AssigneeCrud
-from application.todo.todo_interface import TodoCrud
+from application.assignee.assignee_interface import AssigneeInterface
+from application.todo.todo_interface import TodoInterface
 from domain.todo import Todo
 
 
-class TodoService(TodoCrud):
+class TodoService(TodoInterface):
     def add_todo(self, title, assignee_name):
         error = self.validate_todo(title, assignee_name)
         if not error:
@@ -37,8 +37,8 @@ class TodoService(TodoCrud):
         return self.delete('title', title)
 
     def validate_todo(self, title=None, assignee_name=None):
-        assignee_crud = AssigneeCrud()
-        assignees, error = assignee_crud.load()
+        assignee_interface = AssigneeInterface()
+        assignees, error = assignee_interface.load()
         todos, error = self.load()
 
         # Duplicate title
