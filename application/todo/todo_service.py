@@ -21,8 +21,8 @@ class TodoService(TodoInterface):
             return obj, None
         return None, 'Task not found'
 
-    def complete_todo(self, todo):
-        todo['completed'] = True
+    def complete_todo(self, todo, completed=True):
+        todo['completed'] = completed
         return self.update(todo)
 
     def edit_todo(self, todo, updates):
